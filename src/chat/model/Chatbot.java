@@ -66,9 +66,26 @@ public class Chatbot
 	
 	public String processConversation(String input)
 	{
-		return null;
+		String chatbotResponse = "";
+		chatbotResponse += "You said:" + "\n" + input + "\n";
+		chatbotResponse += buildChatbotResponse();
+		return chatbotResponse;
 	}
 	
+	private String buildChatbotResponse()
+	{
+		String response = "I ";
+		int random = (int) (Math.random() * verbs.length);
+		response += verbs[random];
+		
+		random = (int) (Math.random() * topics.length);
+		response += " " + topics[random] + ".\n";
+		
+		random = (int) (Math.random() * questions.length);
+		response += questions[random];
+		
+		return response;
+	}
 	public boolean lengthChecker(String input)
 	{
 		boolean validLength = false;
@@ -121,11 +138,20 @@ public class Chatbot
 
 	public boolean quitChecker(String exitString)
 	{
+		if (exitString.equalsIgnoreCase("quit"))
+		{
+			return true;
+		}
 		return false;
 	}
 
 	public boolean keyboardMashChecker(String sample)
 	{
+		if (sample.equals("sdf") || sample.equals("SDF") || sample.equals("dfg") || sample.equals("cvb") || sample.equals(",./") || sample.equals("kjh") || sample.equals("DFG") || sample.equals("CVB") || sample.equals("KJH"))
+		{
+			return true;
+		}
+		
 		return false;
 	}
 	
