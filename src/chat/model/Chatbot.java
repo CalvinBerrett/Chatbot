@@ -25,15 +25,22 @@ public class Chatbot
 		this.cuteAnimalMemes = null;
 		this.currentTime = null;
 		this.questions = null;
-		this.username = null;
+		this.username = username;
 		this.content = null;
 		this.intro = null;
-		this.currentTime = null;
+//		this.currentTime = null;
 		this.topics = null;
 		this.verbs = null;
 		this.followUps = null;
 	}
-
+	
+	private void buildVerbs()
+	{
+		verbs[0] = "like";
+		verbs[1] = "dislike";
+		verbs[2] = "am ambivalent about";
+		verbs[3] = "am thinking about";
+	}
 	private void buildMovieList()
 	{
 		
@@ -41,7 +48,10 @@ public class Chatbot
 	
 	private void buildShoppingList()
 	{
-		
+		shoppingList.add("snacks");
+		shoppingList.add("veggies");
+		shoppingList.add("slug bait");
+		shoppingList.add("gross things");
 	}
 	
 	private void buildCuteAnimals()
@@ -61,7 +71,17 @@ public class Chatbot
 	
 	public boolean lengthChecker(String input)
 	{
-		return false;
+		boolean validLength = false;
+		
+		if (input != null && input.length() > 2)
+		{
+			validLength = true;
+		}
+		else
+		{
+			validLength = false;
+		}
+		return validLength;
 	}
 	
 	public boolean htmlTagChecker(String input)
