@@ -81,8 +81,8 @@ public class Chatbot
 	{
 		questions[0] = "Will Yael ever find love? (Hint: Answer is 'NO'";
 		questions[1] = "Do you think Makai is hot?";
-		questions[2] = "Do you think Parker is hot?";
-		questions[3] = "Is life pointless?";
+		questions[2] = "Do you believe Parker will inevitably die?";
+		questions[3] = "Is life pointless? Is it even worth living?";
 	}
 	
 	public String processConversation(String input)

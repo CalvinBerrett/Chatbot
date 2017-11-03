@@ -18,7 +18,7 @@ public class Controller
 	}
 	public void start()
 	{
-		String response = display.collectResponse("What do you want to talk about?");
+		String response = display.collectResponse("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely day?");
 		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
 		{
 			response = popupChat(response);
