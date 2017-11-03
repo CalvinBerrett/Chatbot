@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Chatbot
 {
-	private List<Movie> movieList;
+//	private List<Movie> movieList;
 	private List<String> shoppingList;
 	private List<String> cuteAnimalMemes;
 	private String [] verbs;
@@ -20,18 +20,24 @@ public class Chatbot
 	
 	public Chatbot(String username)
 	{
-		this.movieList = null;
-		this.shoppingList = null;
+	//	this.movieList = new ArrayList<Movie>();
+		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = null;
 		this.currentTime = null;
-		this.questions = null;
+		this.questions = new String[4];
 		this.username = username;
 		this.content = null;
 		this.intro = null;
 //		this.currentTime = null;
-		this.topics = null;
-		this.verbs = null;
+		this.topics = new String[4];
+		this.verbs = new String[4];
 		this.followUps = null;
+		
+		buildVerbs();
+		buildTopics();
+		buildQuestions();
+//		buildMovieList();
+		buildShoppingList();
 	}
 	
 	private void buildVerbs()
@@ -41,10 +47,22 @@ public class Chatbot
 		verbs[2] = "am ambivalent about";
 		verbs[3] = "am thinking about";
 	}
-	private void buildMovieList()
+	
+	private void buildTopics()
 	{
-		
+		topics[0] = "Parker's love life";
+		topics[1] = "Yael's failure as a son";
+		topics[2] = "Makai's suicidal thoughts";
+		topics[3] = "Yael's inability to get laid";
 	}
+	
+//	private void buildMovieList()
+//	{
+//		movieList.add("LOTR");
+//		movieList.add("Star Wars");
+//		movieList.add("Blade Runner");
+//		movieList.add("Ferris Bueller's Day Off");
+//	}
 	
 	private void buildShoppingList()
 	{
@@ -61,7 +79,10 @@ public class Chatbot
 	
 	private void buildQuestions()
 	{
-		
+		questions[0] = "Will Yael ever find love? (Hint: Answer is 'NO'";
+		questions[1] = "Do you think Makai is hot?";
+		questions[2] = "Do you think Parker is hot?";
+		questions[3] = "Is life pointless?";
 	}
 	
 	public String processConversation(String input)
@@ -155,10 +176,10 @@ public class Chatbot
 		return false;
 	}
 	
-	public List<Movie> getMovieList()
-	{
-		return movieList;
-	}
+//	public List<Movie> getMovieList()
+//	{
+//		return movieList;
+//	}
 	
 	public List<String> getShoppingList()
 	{
