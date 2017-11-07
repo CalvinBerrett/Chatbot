@@ -37,7 +37,7 @@ public class ChatbotTest
 	@Test
 	public void testBuildListsAndArray()
 	{
-		assertNotNull("MovieList must be created", testedChatbot.getMov ieList());
+		assertNotNull("MovieList must be created", testedChatbot.getMovieList());
 		assertFalse("MovieList is too small", testedChatbot.getMovieList().size() < 6);
 		assertNotNull("ShoppingList must be created", testedChatbot.getShoppingList());
 		assertTrue("ShoppingList is too small", testedChatbot.getShoppingList().size() > 10);

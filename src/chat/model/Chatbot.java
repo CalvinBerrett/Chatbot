@@ -3,10 +3,11 @@ package chat.model;
 import java.util.List;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import chat.model.Movie;
 
 public class Chatbot
 {
-//	private List<Movie> movieList;
+	private List<Movie> movieList;
 	private List<String> shoppingList;
 	private List<String> cuteAnimalMemes;
 	private String [] verbs;
@@ -20,7 +21,7 @@ public class Chatbot
 	
 	public Chatbot(String username)
 	{
-	//	this.movieList = new ArrayList<Movie>();
+		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = null;
 		this.currentTime = null;
@@ -36,7 +37,7 @@ public class Chatbot
 		buildVerbs();
 		buildTopics();
 		buildQuestions();
-//		buildMovieList();
+		buildMovieList();
 		buildShoppingList();
 	}
 	//creates list of verbs for chatbot to use
@@ -56,13 +57,20 @@ public class Chatbot
 		topics[3] = "Yael's inability to get laid";
 	}
 	
-//	private void buildMovieList()
-//	{
-//		movieList.add("LOTR");
-//		movieList.add("Star Wars");
-//		movieList.add("Blade Runner");
-//		movieList.add("Ferris Bueller's Day Off");
-//	}
+	private void buildMovieList()
+	{
+		Movie m1 = new Movie("LOTR");
+		Movie m2 = new Movie("Star Wars");
+		Movie m3 = new Movie("Blade Runner");
+		Movie m4 = new Movie("Ferris Bueller's Day Off");
+		Movie m5 = new Movie("Nightmare Before Christmas");
+		
+		movieList.add(m1);
+		movieList.add(m2);
+		movieList.add(m3);
+		movieList.add(m4);
+		movieList.add(m5);
+	}
 	
 	private void buildShoppingList()
 	{
@@ -176,10 +184,10 @@ public class Chatbot
 		return false;
 	}
 	
-//	public List<Movie> getMovieList()
-//	{
-//		return movieList;
-//	}
+	public List<Movie> getMovieList()
+	{
+		return movieList;
+	}
 	
 	public List<String> getShoppingList()
 	{
