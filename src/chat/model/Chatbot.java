@@ -39,7 +39,7 @@ public class Chatbot
 //		buildMovieList();
 		buildShoppingList();
 	}
-	
+	//creates list of verbs for chatbot to use
 	private void buildVerbs()
 	{
 		verbs[0] = "like";
@@ -47,7 +47,7 @@ public class Chatbot
 		verbs[2] = "am ambivalent about";
 		verbs[3] = "am thinking about";
 	}
-	
+	//creates list of topics for chatbot to call from
 	private void buildTopics()
 	{
 		topics[0] = "Parker's love life";
@@ -96,13 +96,13 @@ public class Chatbot
 	private String buildChatbotResponse()
 	{
 		String response = "I ";
-		int random = (int) (Math.random() * verbs.length);
+		int random = (int) (Math.random() * verbs.length); //calls a random verb from list of verbs
 		response += verbs[random];
 		
-		random = (int) (Math.random() * topics.length);
+		random = (int) (Math.random() * topics.length); //calls random topic from list of topics
 		response += " " + topics[random] + ".\n";
 		
-		random = (int) (Math.random() * questions.length);
+		random = (int) (Math.random() * questions.length); //calls random question
 		response += questions[random];
 		
 		return response;
@@ -111,7 +111,7 @@ public class Chatbot
 	{
 		boolean validLength = false;
 		
-		if (input != null && input.length() > 2)
+		if (input != null && input.length() > 1)  //checks to see if the length of the user's response is greater than 1, if not, it stops program
 		{
 			validLength = true;
 		}

@@ -5,21 +5,22 @@ import chat.view.PopupDisplay;
 import chat.view.ChatFrame;
 import chat.view.ChatPanel;
 
-public class Controller
+public class ChatbotController
 {
 	private Chatbot chatbot;
 	private PopupDisplay display;
 	private ChatFrame appFrame;
 	
-	public Controller()
+	public ChatbotController()
 	{
 		chatbot = new Chatbot("Ya boi");
-		display= new PopupDisplay();
+		display = new PopupDisplay();
+		appFrame = new ChatFrame();
 	}
 	public void start()
 	{
 		String response = display.collectResponse("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely day?");
-		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
+		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))  // checks to see if the response is long enough and not "quit" if not then the chatbot continues to respond
 		{
 			response = popupChat(response);
 			response = display.collectResponse(response);
@@ -37,5 +38,20 @@ public class Controller
 		String chatbotSays = "";
 		chatbotSays += chatbot.processConversation(chat);
 		return chatbotSays;
+	}
+	
+	public Chatbot getChatbot()
+	{
+		return chatbot;
+	}
+	
+	public PopupDisplay getDisplay()
+	{
+		return display;
+	}
+	
+	public ChatFrame getChatFrame()
+	{
+		return appFrame;
 	}
 }

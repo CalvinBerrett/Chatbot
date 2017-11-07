@@ -2,11 +2,11 @@ package chat.controller;
 
 // import chat.view.PopupDisplay;
 
-public class Runner
+public class ChatbotRunner
 {
 	public static void main(String []args)
 	{
-		Controller app = new Controller();
+		ChatbotController app = new ChatbotController();
 		app.start();
 		
 	}
