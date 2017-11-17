@@ -15,17 +15,17 @@ public class ChatbotController
 	{
 		chatbot = new Chatbot("Ya boi");
 		display = new PopupDisplay();
-		appFrame = new ChatFrame();
+		appFrame = new ChatFrame(this);
 	}
 	public void start()
 	{
-		String response = display.collectResponse("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely day?");
-		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))  // checks to see if the response is long enough and not "quit" if not then the chatbot continues to respond
-		{
-			response = popupChat(response);
-			response = display.collectResponse(response);
-			
-		}
+//		String response = display.collectResponse("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely day?");
+//		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))  // checks to see if the response is long enough and not "quit" if not then the chatbot continues to respond
+//		{
+//			response = popupChat(response);
+//			response = display.collectResponse(response);
+//			
+//		}
 	}
 	
 	public String interactWithChatbot(String input)

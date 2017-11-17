@@ -163,7 +163,7 @@ public class Chatbot
 			return true;
 		}
 		else if (contentCheck.contentChecker().indexOf(content2.contentChecker()) != -1)
-		{
+		{ƒ
 			return true;
 		}
 		else
