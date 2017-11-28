@@ -7,6 +7,8 @@ import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 import chat.controller.ChatbotController;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ChatPanel extends JPanel
 {
@@ -15,7 +17,11 @@ public class ChatPanel extends JPanel
 	private JTextField inputField;
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
-	
+	private JButton checkerButton;
+	/**
+	 * 
+	 * @param appController
+	 */
 	public ChatPanel(ChatbotController appController)
 	{
 		super();
@@ -26,12 +32,16 @@ public class ChatPanel extends JPanel
 		chatArea = new JTextArea(10,25);
 		inputField = new JTextField(20);
 		appLayout = new SpringLayout();
+		checkerButton = new JButton("Check");
 			
 		setupPanel();
 		setupLayout();
 		setupListeners();
 		
 	}
+	/**
+	 * Adds everythang in to da frame
+	 */
 	private void setupPanel()
 	{
 		this.setBackground(Color.MAGENTA);
@@ -39,9 +49,13 @@ public class ChatPanel extends JPanel
 		this.add(chatButton);
 		this.add(inputField);
 		this.add(chatArea);
+		this.add(checkerButton);
 		chatArea.setEnabled(false);
 		chatArea.setEditable(false);
 	}
+	/**
+	 * Holds all the code for where the items in the window are placed
+	 */
 	private void setupLayout()
 	{
 		appLayout.putConstraint(SpringLayout.SOUTH, inputField, -24, SpringLayout.SOUTH, this);
@@ -55,8 +69,30 @@ public class ChatPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.WEST, chatButton, -109, SpringLayout.EAST, this);
 		appLayout.putConstraint(SpringLayout.EAST, chatButton, 0, SpringLayout.EAST, chatArea);
 	}
+	/**
+	 * 
+	 */
 	private void setupListeners()
 	{
-		
+		chatButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String userText = inputField.getText();
+				String displayText = appController.interactWithChatbot(userText);
+				chatArea.append(displayText);
+				inputField.setText("");
+			}
+		});
+		checkerButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String userText = inputField.getText();
+				String displayText = appController.useCheckers(userText);
+				chatArea.append(displayText);
+				inputField.setText("");
+			}
+		});
 	}
 }

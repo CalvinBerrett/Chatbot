@@ -4,6 +4,7 @@ import java.util.List;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import chat.model.Movie;
+//import chat.controller.ChatbotController;
 
 public class Chatbot
 {
@@ -28,7 +29,7 @@ public class Chatbot
 		this.questions = new String[4];
 		this.username = username;
 		this.content = null;
-		this.intro = null;
+		this.intro = new String("");
 //		this.currentTime = null;
 		this.topics = new String[4];
 		this.verbs = new String[4];
@@ -129,6 +130,8 @@ public class Chatbot
 		}
 		return response;
 	}
+	
+	
 	public boolean lengthChecker(String input)
 	{
 		boolean validLength = false;
@@ -156,22 +159,6 @@ public class Chatbot
 	
 	public boolean contentChecker(String contentCheck)
 	{
-		String content = "Hidden Figures";
-		String content2 = "Spiderman";
-		if (contentCheck.contentChecker().indexOf(content.contentChecker()) != -1)
-		{
-			return true;
-		}
-		else if (contentCheck.contentChecker().indexOf(content2.contentChecker()) != -1)
-		{ƒ
-			return true;
-		}
-		else
-		{f
-			return false;
-		}
-		
-		
 		return false;
 	}
 	
@@ -261,7 +248,7 @@ public class Chatbot
 
 	public String getIntro()
 	{
-		return null;
+		return intro;
 	}
 	
 	public LocalTime getCurrentTime()
