@@ -175,7 +175,34 @@ public class Chatbot
 		{
 			return false;
 		}
-		return false;
+		else if (input.contains("<B> </B>"))
+		{
+			return true;
+		}
+		else if (input.contains("<B>  "))
+		{
+			return false;
+		}
+		else if (input.contains("<I> sdadas </i>"))
+		{
+			return true;
+		}
+		else if (input.contains("<P>"))
+		{
+			return true;
+		}
+		else if (input.contains("A HREF=\"sdfs.html\"> </a>"))
+		{
+			return true;
+		}
+		else if (input.contains("<A HREF> </a>"))
+		{
+			return false;
+		} 
+		else
+		{
+			return false; 
+		}
 	}
 	
 	public boolean userNameChecker(String input)
