@@ -18,7 +18,7 @@ public class ChatbotController
 	}
 	public void start()
 	{
-		display.displayText("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely evening?");
+//		display.displayText("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely evening?");
 //		String response = display.collectResponse("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely day?");
 //		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))  // checks to see if the response is long enough and not "quit" if not then the chatbot continues to respond
 //		{

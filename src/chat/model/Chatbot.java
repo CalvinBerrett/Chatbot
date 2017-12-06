@@ -25,7 +25,7 @@ public class Chatbot
 		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = null;
-		this.currentTime = null;
+		this.currentTime = LocalTime.now();
 		this.questions = new String[4];
 		this.username = username;
 		this.content = null;
@@ -33,7 +33,7 @@ public class Chatbot
 //		this.currentTime = null;
 		this.topics = new String[4];
 		this.verbs = new String[4];
-		this.followUps = null;
+		this.followUps = new String[4];
 		
 		buildVerbs();
 		buildTopics();
@@ -101,8 +101,12 @@ public class Chatbot
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
+		currentTime = LocalTime.now();
+		chatbotResponse += currentTime.getHour() + ":" + currentTime.getMinute() + " ";
 		chatbotResponse += "You said:" + "\n" + input + "\n";
+		
 		chatbotResponse += buildChatbotResponse();
+		
 		return chatbotResponse;
 	}
 	/**
@@ -207,7 +211,18 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
+		if (input.contains("@".substring(0)))
+		{
+			if (input.contains("@@"))
+			{
+				return false;
+			}
+			return true;
+		}
+		else
+		{
 		return false;
+		}
 	}
 	
 	public boolean contentChecker(String contentCheck)
