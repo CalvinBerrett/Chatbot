@@ -98,4 +98,9 @@ public class ChatbotController
 	{
 		return appFrame;
 	}
+	
+	public void HandleError(exception error)
+	{
+		popup.displayText(error.setMessage());
+	}
 }

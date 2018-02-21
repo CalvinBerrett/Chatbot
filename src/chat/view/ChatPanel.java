@@ -1,10 +1,6 @@
 package chat.view;
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.SpringLayout;
+import javax.swing.*;
 import chat.controller.ChatbotController;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -30,7 +26,7 @@ public class ChatPanel extends JPanel
 		this.appController = appController;
 		
 		//Initialization of GUI data members
-		chatButton = new JButton("Chat");
+		chatButton = new JButton("Chat", new ImageIcon(getClass().getResource("/chat/view/images/Chat.png")));
 		chatArea = new JTextArea(10,25);
 		inputField = new JTextField(20);
 		infoLabel = new JLabel("Type to chat with Ya Boi");
