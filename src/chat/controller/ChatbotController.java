@@ -18,7 +18,9 @@ public class ChatbotController
 	}
 	public void start()
 	{
-		display.displayText("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely evening?");
+		String results = IOController.loadFromFile(this, "commonWords.txt");
+		IOController.saveToFile(this, results, "Save results.txt");
+//		display.displayText("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely evening?");
 //		String response = display.collectResponse("Ayyye Sup Bruh? Wha chu wanna have an intellectual and meaningful conversation about on this lovely day?");
 //		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))  // checks to see if the response is long enough and not "quit" if not then the chatbot continues to respond
 //		{
@@ -35,11 +37,14 @@ public class ChatbotController
 	public String interactWithChatbot(String input)
 	{
 		String chatbotSays = "";
+		
 		if(chatbot.quitChecker(input))
 		{
 			close();
 		}
-		chatbot.processConversation(input);
+		
+		chatbotSays += chatbot.processConversation(input);
+		
 		return chatbotSays;
 	}
 	
@@ -56,6 +61,11 @@ public class ChatbotController
 			response +="";
 		}
 		return response;
+	}
+	
+	public void handleErrors(Exception error)
+	{
+		display.displayText(error.getMessage());
 	}
 	
 	private void close()
@@ -102,5 +112,10 @@ public class ChatbotController
 	public void HandleError(exception error)
 	{
 		popup.displayText(error.setMessage());
+	}
+	
+	public void tweet(String text)
+	{
+		myTwitter.sendTweet(text);
 	}
 }

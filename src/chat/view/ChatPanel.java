@@ -16,6 +16,10 @@ public class ChatPanel extends JPanel
 	private SpringLayout appLayout;
 	private JButton checkerButton;
 	private JLabel infoLabel;
+	private JButton loadButton;
+	private JButton saveButton;
+	private JButton searchButton;
+	private JButton tweetButton;
 	/**
 	 * 
 	 * @param appController
@@ -27,6 +31,11 @@ public class ChatPanel extends JPanel
 		
 		//Initialization of GUI data members
 		chatButton = new JButton("Chat", new ImageIcon(getClass().getResource("/chat/view/images/Chat.png")));
+		loadButton = new JButton("Load", new ImageIcon(getClass().getResource("/chat/view/images/Loading.png")));
+		saveButton = new JButton("Load", new ImageIcon(getClass().getResource("/chat/view/images/Save.png")));
+		searchButton = new JButton("Load", new ImageIcon(getClass().getResource("/chat/view/images/Search.png")));
+		tweetButton = new JButton("Load", new ImageIcon(getClass().getResource("/chat/view/images/Tweet.png")));
+	
 		chatArea = new JTextArea(10,25);
 		inputField = new JTextField(20);
 		infoLabel = new JLabel("Type to chat with Ya Boi");
