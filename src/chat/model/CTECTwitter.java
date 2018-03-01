@@ -48,6 +48,9 @@ public class CTECTwitter
 		String mostCommon = "";
 		
 		collectTweets(username);
+		turnStatusesToWords();
+		totalWordCount = tweetedWords.size();
+		String [] boring = createIgnoredWordArray();
 		
 		return mostCommon;
 	}
@@ -58,7 +61,7 @@ public class CTECTwitter
 		tweetedWords.clear();
 		
 		Paging statusPage = new Paging(1,100);
-		int page = 1;
+		int page = 1; 
 		long lastID = Long.MAX_VALUE;
 		
 		while(page <= 10)
@@ -82,5 +85,59 @@ public class CTECTwitter
 			}
 			page++;
 		}
+	}
+	public void turnStatusesToWords()
+	{
+		for(Status currentStatus : searchedTweets)
+		{
+			String tweetText = currentStatus.getText();
+			String [] tweetWords = tweetText.split(" ");
+			for(int index = 0; index < tweetWords.length; index++)
+			{
+				tweetedWords.add(removePunctuation(tweetWords[index]).trim());
+			}
+		}
+	}
+	
+	private String removePunctuation(String currentString)
+	{
+		String punctuation = ".,'?!;\"(){}^[]<>-";
+		
+		String scrubbedString = "";
+		for (int i = 0; i < currentString.length(); i++)
+		{
+			if(punctuation.indexOf(currentString.chatAt(i)) == -1)
+			{
+				scrubbedString += currentString.chatAt(i);
+			}
+		}
+		return scrubbedString;
+	}
+	
+	private String [] createIgnoredWordArray()
+	{
+		String [] boringWords;
+		String fileText = IOController.loadFromFile(appController, "commonWords.txt");
+		int wordCount = 0;
+		Scanner wordScanner = new Scanner(fileText);
+		
+		while(wordScanner.hasNextLine())
+		{
+			wordScanner.nextLine();
+			wordCount++;
+		}
+		
+		boringWords = new String [wordCount];
+		wordScanner.close();
+		
+		wordScanner = new Scanner(this.getClass().getResourceAsStream("data/commonWords.txt"));
+		for(int index = 0; index < boringWords.length; index++)
+		{
+			boringWords[index] = wordScanner.nextLine();
+		}
+		
+		wordScanner.close();
+		return boringWords;
+				
 	}
 }
