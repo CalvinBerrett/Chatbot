@@ -1,10 +1,8 @@
 package chat.model;
-import chat.controller.ChatbotController;
 
 import chat.controller.ChatbotController;
 import chat.controller.IOController;
 import twitter4j.*;
-
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -16,15 +14,17 @@ public class CTECTwitter
 	private Twitter chatbotTwitter;
 	private List<Status> searchedTweets;
 	private List<String> tweetedWords;
+	private HashMap<String, Integer> wordsAndCount;
 	private long totalWordCount;
 
 	public CTECTwitter(ChatbotController appController)
 	{
 		this.appController = appController;
-		this.chatbotTwitter = TwitterFactory.getSingleton;
+		this.chatbotTwitter = TwitterFactory.getSingleton();
 		this.tweetedWords = new ArrayList<String>();
 		this.searchedTweets = new ArrayList<Status>();
 		this.totalWordCount = 0;
+		this.wordsAndCount = new HashMap<String, Integer>();
 	}
 	
 	public void sendTweet(String textToTweet)
@@ -43,7 +43,7 @@ public class CTECTwitter
 		}
 	}
 	
-	public void String getMostCommonWord(String username)
+	public  String getMostCommonWord(String username)
 	{
 		String mostCommon = "";
 		
@@ -91,6 +91,7 @@ public class CTECTwitter
 		for(Status currentStatus : searchedTweets)
 		{
 			String tweetText = currentStatus.getText();
+			tweetText = tweetText.replace("/n", " ");
 			String [] tweetWords = tweetText.split(" ");
 			for(int index = 0; index < tweetWords.length; index++)
 			{
@@ -106,9 +107,9 @@ public class CTECTwitter
 		String scrubbedString = "";
 		for (int i = 0; i < currentString.length(); i++)
 		{
-			if(punctuation.indexOf(currentString.chatAt(i)) == -1)
+			if(punctuation.indexOf(currentString.charAt(i)) == -1)
 			{
-				scrubbedString += currentString.chatAt(i);
+				scrubbedString += currentString.charAt(i);
 			}
 		}
 		return scrubbedString;
@@ -139,5 +140,20 @@ public class CTECTwitter
 		wordScanner.close();
 		return boringWords;
 				
+	}
+	
+	private void trimTheBoringWords(String [] boringWords)
+	{
+		for (int index = tweetedWords.size() - 1; index >= 0; index--)
+		{
+			for (int removeIndex = 0; removeIndex < boringWords.length; removeIndex++)
+			{
+				if (tweetedWords.get(index).equals(boringWords[removeIndex]))
+				{
+					tweetedWords.remove(index);
+					removeIndex = Integer.MAX_VALUE;
+				}
+			}
+		}
 	}
 }

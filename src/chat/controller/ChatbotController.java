@@ -4,12 +4,14 @@ import chat.model.Chatbot;
 import chat.view.PopupDisplay;
 import chat.view.ChatFrame;
 import chat.view.ChatPanel;
+import chat.model.CTECTwitter;
 
 public class ChatbotController
 {
 	private Chatbot chatbot;
 	private PopupDisplay display;
 	private ChatFrame appFrame;
+	private CTECTwitter myTwitter;
 	public ChatbotController()
 	{
 		chatbot = new Chatbot("Ya boi");
@@ -117,5 +119,10 @@ public class ChatbotController
 	public void tweet(String text)
 	{
 		myTwitter.sendTweet(text);
+	}
+	
+	public String search(String text)
+	{
+		return myTwitter.getMostCommonWord(text);
 	}
 }

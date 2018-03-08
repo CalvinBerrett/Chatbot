@@ -52,7 +52,7 @@ public class IOController
 		
 		try
 		{
-			File openFile  new File(filename);
+			File openFile = new File(filename);
 			Scanner fileScanner = new Scanner(openFile);
 			
 			String currentLine = fileScanner.nextLine();
@@ -66,7 +66,7 @@ public class IOController
 		}
 		catch (IOException error)
 		{
-			app.handleErros(error);
+			app.handleErrors(error);
 		}
 		return results;
 	}

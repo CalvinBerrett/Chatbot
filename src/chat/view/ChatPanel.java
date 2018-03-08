@@ -103,5 +103,10 @@ public class ChatPanel extends JPanel
 				inputField.setText("");
 			}
 		});
+		searchButton.addActionListener(new ActionListener()
+			public void actionPerformed(ActionEvent click)
+			{
+				String username = inputField.getText();
+			}
 	}
 }
